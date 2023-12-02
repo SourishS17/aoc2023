@@ -20,7 +20,6 @@ from re import *
 
 t=0 
 
-
 x="""Game 1: 7 green, 14 red, 5 blue; 8 red, 4 green; 6 green, 18 red, 9 blue
 Game 2: 3 blue, 15 red, 5 green; 1 blue, 14 red, 5 green; 11 red; 4 green, 1 blue, 3 red; 4 green, 1 blue; 10 red, 1 green
 Game 3: 11 green, 3 red; 4 green, 15 blue; 14 blue, 2 red, 10 green; 1 red, 3 green, 10 blue
@@ -121,31 +120,22 @@ Game 97: 19 blue, 10 red, 4 green; 8 red, 17 blue; 8 blue
 Game 98: 2 blue, 2 red, 4 green; 5 green, 3 blue, 2 red; 5 green, 15 blue; 15 blue, 5 green, 1 red
 Game 99: 1 blue, 2 green, 8 red; 1 blue, 7 red, 1 green; 11 red, 2 green; 1 red, 1 blue
 Game 100: 8 green; 2 red, 20 green; 12 green, 1 red, 1 blue; 4 red, 1 blue; 1 blue, 6 red""".splitlines()
+ 
 
 for i in x:
-    q,w=i.split(": ")
-
-    a,b,c=0,0,0
-    w=w.split(";")
-    
-    l=0
-    print(q,w)
-
-    for ii in w:
+    a,b=i.split(": ")
+    a=int(a.split()[1])
+    b=b.split("; ")
+    y=dd(int)
+    for ii in b:
         ii=ii.split(", ")
         for iii in ii:
-            if "red" in iii:
-                a=max(a,(int(iii.split()[0])))
-            if "green" in iii:
-                b=max(b,(int(iii.split()[0])))
-            if "blue" in iii:
-                c=max(c,(int(iii.split()[0])))
-    p=a*b*c
-    
-    t+=p
- 
-
- 
+            q,w=iii.split()
+            q=int(q)
+            y[w]=max(y[w],q)
+    t+=prod(y.values())
+        
+            
 
  
 
