@@ -175,14 +175,6 @@ while 1:
             if y[(a,i)].isdigit():
                 aa+=y[(a,i)]
             else:break
-        if len(aa)==0:
-            b+=1
-            if b>=len(x[0]):
-                b=0
-                a+=1
-                if a>=len(x):
-                    break
-            continue
         aa=int(aa)
         l=0
         for ii in range(a-1,a+2):

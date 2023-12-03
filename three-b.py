@@ -161,81 +161,46 @@ x=""".......................661.........................485..565.......344......
 934..231.....*....821...230.....981..............%........707..370....*.....634%..787..*..........93..909..70..........199.59...490.........
 .......*....525.........-........*...747...676=..../.......*..........829...............324..952.........%...*..........................%...
 .....189.........................791.............236........687.868........................................505..............713......777....""".splitlines()
-
 y=dd(str)
 for i in range(len(x)):
     for r in range(len(x[0])):
         y[(i,r)]=x[i][r]
- 
+
+yy=dd(list)
 
 a,b=0,0
 while 1:
-    if y[(a,b)]=="*":
-        h=[]
+    if y[(a,b)].isdigit():
         aa=""
-        for ii in range(b-1,b-4,-1):
-            if y[(a,ii)].isdigit():
-                aa=y[(a,ii)]+aa
+        for i in range(b,b+10):
+            if y[(a,i)].isdigit():
+                aa+=y[(a,i)]
             else:break
+        aa=int(aa)
+        for ii in range(a-1,a+2):
+            for iii in range(b-1,i+1):
+                if y[(ii,iii)].isdigit():continue
+                if len(y[(ii,iii)])==1 and y[(ii,iii)]== "*":
+                    yy[(ii,iii)].append(aa)
+                    print(aa)
 
-        if len(aa)!=0:h.append(int(aa))
+        b=i
+        if b>=len(x[0]):
+            b=0
+            a+=1
+            if a>=len(x):
+                break
+    else:
+        b+=1
+        if b>=len(x[0]):
+            b=0
+            a+=1
+            if a>=len(x):
+                break
 
-        aa=""
-        for ii in range(b+1,b+4):
-            if y[(a,ii)].isdigit():
-                aa+=y[(a,ii)]
-            else:break
+for i in yy.values():
+    if len(i)==2:t+=prod(i)
 
-        if len(aa)!=0:h.append(int(aa))
-            
-        aa=""
-        for ii in range(b+1,b+4):
-            if y[(a-1,ii)].isdigit():
-                aa+=y[(a-1,ii)]
-            else:break
-        if y[(a-1,b)].isdigit():
-            aa=y[(a-1,b)]+aa
-        else:
-            if len(aa)!=0:
-                h.append(int(aa))
-                aa=""
-
-        for ii in range(b-1,b-4,-1):
-            if y[(a-1,ii)].isdigit():
-                aa=y[(a-1,ii)]+aa
-            else:break
-        if len(aa)!=0:h.append(int(aa))
- 
-        aa=""
-        for ii in range(b+1,b+4):
-            if y[(a+1,ii)].isdigit():
-                aa+=y[(a+1,ii)]
-            else:break
-        if y[(a+1,b)].isdigit():
-            aa=y[(a+1,b)]+aa
-        else:
-            if len(aa)!=0:
-                h.append(int(aa))
-                aa=""
-
-        for ii in range(b-1,b-4,-1):
-            if y[(a+1,ii)].isdigit():
-                aa=y[(a+1,ii)]+aa
-            else:break
-        if len(aa)!=0:h.append(int(aa))
-        if len(h)==2:t+=prod(h)
-
-    b+=1
-    if b>=len(x[0]):
-        b=0
-        a+=1
-        if a>=len(x):
-            break
-
-
- 
-
- 
 
 print(t) 
 
