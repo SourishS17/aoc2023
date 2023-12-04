@@ -1,22 +1,4 @@
-from subprocess import Popen, PIPE
-from time import sleep 
-from collections import defaultdict as dd 
-from collections import deque as de 
-from collections import Counter as cn 
-from string import ascii_uppercase as au 
-from string import ascii_lowercase as al 
-from copy import deepcopy as dp 
-from itertools import * 
 from math import prod 
-from math import factorial 
-from sys import exit 
-from sys import setrecursionlimit as srl 
-from statistics import mode 
-from statistics import median 
-from heapq import * 
-from re import * 
-#import networkx as nx 
-#max(set(lst), key=lst.count) 
 
 t=0 
 
@@ -40,20 +22,7 @@ for i in x:
             y[w]=max(y[w],q)
     t+=prod(y.values())
         
-            
-
- 
-
  
 
 print(t) 
-
-def copy_clipboard(msg):
-    with Popen(['xclip','-selection', 'clipboard'], stdin=PIPE) as pipe:
-        pipe.communicate(input=msg.encode('utf-8'))
-
-copy_clipboard(str(t))
- 
-
-
 
